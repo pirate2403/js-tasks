@@ -1,17 +1,12 @@
 function School(name, minYears) {
-    // осуществлен перевод в arrow function
-    // используется camelCase
-    // так как снаружи вызывается только метод WELCOME убрал this чтобы не было доступа снаружи
     minYears = parseInt(minYears);
-    schoolName = name.trim();
-    // добавил методы(parseInt, trim) при присвоении переменных, убрал контекст, т.к переменнтые используются внутри функции
+    schoolName = name.trim();   
     if (!schoolName) {
         throw Error("Не указано название школы");
     }
     if (!minYears) {
         throw Error("Не указано минимальное количество лет");
-    }
-    // убрал лишние проверки
+    }    
     checkAge = (age) => {
         if (age < minYears) {
             return {
@@ -24,21 +19,17 @@ function School(name, minYears) {
                 message: `Добро пожаловать в автошколу "${schoolName}"!`
             };
         }
-    };
-    //используются переменные без this, исправлена интерпаляция и второй блок else if
+    };  
     getTeacherList = [
         "А. С. Иванов",
         "В. С. Петров",
         "И. А. Сидоров"
-    ]
-    // заменил return OBJ на ARR, так как используется в след методе LENGTH
+    ]    
     getTeacher = (id) => {
         if (!id) { id = Math.floor(Math.random() * getTeacherList.length); }
         return getTeacherList[id];
     };
-    // если не задавать id в ручную, то id сгенерируется автоматом
 
-    //дописана функция попроверке введенных данных
     checkValue = (val, promptMes) => {
         let data = String(val);
         data = data ? data : prompt(promptMes);
